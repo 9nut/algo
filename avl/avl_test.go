@@ -3,7 +3,7 @@ package AVL
 import (
 	"fmt"
 	"testing"
-	"algo/pq"
+	"github.com/9nut/algo/pq"
 )
 
 type IntType int
