@@ -3,20 +3,20 @@
 package AVL
 
 // Any value type that satisifies AVL.Comparable interface
-// can be managed by an AVL data structure 
+// can be managed by an AVL data structure
 type Comparable interface {
 	Equal(Comparable) bool
 	Less(Comparable) bool
 }
 
 type Node struct {
-	H int
-	V Comparable
+	H       int
+	V       Comparable
 	p, l, r *Node
 }
 
 func NewNode(v Comparable) *Node {
-	return &Node{H:1, V:v}	// p, l, r == nil
+	return &Node{H: 1, V: v} // p, l, r == nil
 }
 
 func nht(n *Node) int {
@@ -154,9 +154,9 @@ func (b *Node) Insert(v Comparable) *Node {
 	}
 
 	if v.Less(p.V) {
-		p.l = &Node{p: p, V:v, H:1}
+		p.l = &Node{p: p, V: v, H: 1}
 	} else {
-		p.r = &Node{p: p, V:v, H:1}
+		p.r = &Node{p: p, V: v, H: 1}
 	}
 
 	return p.Fix()
@@ -193,7 +193,7 @@ func (b *Node) Remove(v Comparable) *Node {
 			// c is at the root
 			if c.r != nil {
 				c.r.p = nil
-				return c.r	// c.r wasn't touched so no need to Fix
+				return c.r // c.r wasn't touched so no need to Fix
 			}
 			// c was the last element
 			return nil
@@ -219,7 +219,7 @@ func (b *Node) Remove(v Comparable) *Node {
 			r, rp = r.r, r
 		}
 
-		r.p = p 
+		r.p = p
 		if p != nil {
 			if c == p.l {
 				p.l = r
@@ -241,7 +241,7 @@ func (b *Node) Remove(v Comparable) *Node {
 }
 
 // Traverse the tree in ascending order (as determined by to Comparable.Less)
-func (b *Node) Traverse(f func (interface{})) {
+func (b *Node) Traverse(f func(interface{})) {
 	if b.l != nil {
 		b.l.Traverse(f)
 	}
@@ -252,7 +252,7 @@ func (b *Node) Traverse(f func (interface{})) {
 }
 
 // Traverse the tree in descending order (as determined by Comparable.Less)
-func (b *Node) RTraverse(f func (interface{})) {
+func (b *Node) RTraverse(f func(interface{})) {
 	if b.r != nil {
 		b.r.RTraverse(f)
 	}
@@ -261,4 +261,3 @@ func (b *Node) RTraverse(f func (interface{})) {
 		b.l.RTraverse(f)
 	}
 }
-

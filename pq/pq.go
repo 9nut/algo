@@ -12,15 +12,15 @@ type Node struct {
 type PQ []Node
 
 func parent(i int) int {
-	return (i-1)/2
+	return (i - 1) / 2
 }
 
 func left(i int) int {
-	return 2*i+1
+	return 2*i + 1
 }
 
 func right(i int) int {
-	return 2*i+2
+	return 2*i + 2
 }
 
 // make sure parent's priority >= max(left,right) children's priority
@@ -31,7 +31,7 @@ func (I *PQ) downheap(i int) {
 		var largest int
 		if l < len(*I) && (*I)[l].P > (*I)[i].P {
 			largest = l
-		}else{
+		} else {
 			largest = i
 		}
 		if r < len(*I) && (*I)[r].P > (*I)[largest].P {
@@ -52,7 +52,7 @@ func (I *PQ) downheap(i int) {
 // Convert a []Node to a PQ
 func (I *PQ) MakePQ() {
 	// fmt.Println("MakePQ:", *I)
-	for i := (len(*I)-1)/2; i >= 0; i-- {
+	for i := (len(*I) - 1) / 2; i >= 0; i-- {
 		// fmt.Println("MakePQ i: ", i)
 		I.downheap(i)
 	}
@@ -79,8 +79,6 @@ func (I *PQ) upheap(i int) {
 
 // add a new element, maintaining the heap structure.
 func (I *PQ) Push(p int, v interface{}) {
-	*I = append(*I, Node{P:p, V:v})
-	I.upheap(len(*I)-1)
+	*I = append(*I, Node{P: p, V: v})
+	I.upheap(len(*I) - 1)
 }
-
-

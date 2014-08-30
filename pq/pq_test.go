@@ -39,7 +39,7 @@ func TestPq(*testing.T) {
 	for len(I) > 0 {
 		fmt.Println(I.Pop())
 	}
-	for _, v := range(K) {
+	for _, v := range K {
 		I.Push(v.P, v)
 	}
 	for len(I) > 0 {
@@ -65,5 +65,3 @@ func BenchmarkPQPop(b *testing.B) {
 		I.Pop()
 	}
 }
-
-

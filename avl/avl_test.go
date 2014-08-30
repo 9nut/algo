@@ -2,8 +2,8 @@ package AVL
 
 import (
 	"fmt"
-	"testing"
 	"github.com/9nut/algo/pq"
+	"testing"
 )
 
 type IntType int
@@ -40,7 +40,7 @@ func TestAVL(*testing.T) {
 		fmt.Println("Inserting ", i)
 		tree = tree.Insert(IntType(i))
 	}
-	prnode := func (v interface{}) {
+	prnode := func(v interface{}) {
 		vv, ok := v.(IntType)
 		if ok {
 			fmt.Println(vv)
